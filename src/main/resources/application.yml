@@ -1,0 +1,24 @@
+server:
+  port: 8080
+  rest:
+    context-path: /api
+spring:
+  application:
+    name: pastry-warehouse
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    open-in-view: true
+    generate-ddl: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pastry-warehouse
+    username: postgres
+    password: postgres
+    platform: POSTGRESQL
+
