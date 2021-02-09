@@ -4,6 +4,8 @@ import ftn.aups.pastrywarehouse.receiver.ReceiverDto;
 import ftn.aups.pastrywarehouse.receiver.ReceiverMapper;
 import ftn.aups.pastrywarehouse.receiver.ReceiverService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +29,7 @@ public class SupplierController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping("api/supplier")
+    @PostMapping(value = "api/supplier", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ReceiverDto> insert(@RequestBody SupplierDto supplierDto) {
         supplierService.insert(supplierMapper.toEntity(supplierDto));
         return ResponseEntity.ok().build();
