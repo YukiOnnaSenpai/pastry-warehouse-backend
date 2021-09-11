@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class InitCommandLineRunner implements CommandLineRunner {
 
-
   private final SupplierRepository supplierRepository;
 
   @Override

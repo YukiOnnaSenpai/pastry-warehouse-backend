@@ -22,7 +22,7 @@ public class PostalAddressMapper implements Mapper<PostalAddressDto, PostalAddre
         PostalAddress postalAddress = new PostalAddress();
         postalAddress.setStreetName(postalAddressDto.getStreetName());
         postalAddress.setPostalCode(postalAddressDto.getPostalCode());
-        postalAddress.setCity(postalAddress.getCity());
+        postalAddress.setCity(postalAddressDto.getCity());
 
         return postalAddress;
     }

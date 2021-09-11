@@ -15,7 +15,7 @@ public class Supplier {
 
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private PostalAddress postalAddress;
 
     private String phoneNumber;

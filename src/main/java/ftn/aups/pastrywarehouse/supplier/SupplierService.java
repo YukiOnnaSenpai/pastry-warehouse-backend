@@ -20,6 +20,11 @@ public class SupplierService {
     public Set<Supplier> getByIds(List<Long> ids) {
         return supplierRepository.findByIdIn(ids);
     }
+
+    public Supplier getOne(Long id) {
+        return supplierRepository.findById(id).orElseThrow();
+    }
+
     public void insert(Supplier supplier) {
         supplierRepository.save(supplier);
     }
