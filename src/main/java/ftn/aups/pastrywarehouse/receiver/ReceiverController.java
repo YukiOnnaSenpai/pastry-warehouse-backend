@@ -23,7 +23,7 @@ public class ReceiverController {
 
     @PostMapping("api/receiver")
     public ResponseEntity<ReceiverDto> insert(@RequestBody ReceiverDto receiverDto) {
-         receiverService.insert(receiverMapper.toEntity(receiverDto));
+         receiverService.save(receiverMapper.toEntity(receiverDto));
          return ResponseEntity.ok().build();
     }
 

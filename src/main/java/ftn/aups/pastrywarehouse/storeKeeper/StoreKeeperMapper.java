@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class StorageKeeperMapper implements Mapper<StoreKeeperDto, StoreKeeper> {
+public class StoreKeeperMapper implements Mapper<StoreKeeperDto, StoreKeeper> {
 
   @Override
   public StoreKeeperDto toDto(StoreKeeper storeKeeper) {

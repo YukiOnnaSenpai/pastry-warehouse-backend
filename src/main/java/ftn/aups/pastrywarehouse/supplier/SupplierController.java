@@ -36,7 +36,7 @@ public class SupplierController {
     @PostMapping(value = "api/supplier", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SupplierDto> insert(@RequestBody SupplierDto supplierDto) {
         LOGGER.info("Adding a new supplier! {}", supplierDto);
-        supplierService.insert(supplierMapper.toEntity(supplierDto));
+        supplierService.save(supplierMapper.toEntity(supplierDto));
         return ResponseEntity.ok().build();
     }
 

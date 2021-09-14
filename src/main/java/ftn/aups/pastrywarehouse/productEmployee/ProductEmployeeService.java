@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService implements CrudService<ProductEmployee> {
+public class ProductEmployeeService implements CrudService<ProductEmployee> {
 
   private final ProductEmployeeRepository productEmployeeRepository;
 
