@@ -2,12 +2,13 @@ package ftn.aups.pastrywarehouse.ingredient;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import ftn.aups.pastrywarehouse.CrudService;
 import ftn.aups.pastrywarehouse.domain.Ingredient;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-@Data
+@Service
 @RequiredArgsConstructor
 public class IngredientService implements CrudService<Ingredient> {
 
