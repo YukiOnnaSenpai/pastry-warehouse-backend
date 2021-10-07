@@ -19,6 +19,6 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/pastry-warehouse
     username: postgres
-    password: postgres
+    password: admin
     platform: POSTGRESQL
 

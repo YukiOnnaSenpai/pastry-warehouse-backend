@@ -14,6 +14,7 @@ public class ProductEmployeeMapper implements Mapper<ProductEmployeeDto, Product
   @Override
   public ProductEmployeeDto toDto(ProductEmployee productEmployee) {
     ProductEmployeeDto productEmployeeDto = new ProductEmployeeDto();
+    productEmployeeDto.setId(productEmployee.getId());
     productEmployeeDto.setFirstName(productEmployee.getEmployeeDetails().getFirstName());
     productEmployeeDto.setLastName(productEmployee.getEmployeeDetails().getLastName());
     productEmployeeDto.setPersonalId(productEmployee.getEmployeeDetails().getPersonalId());

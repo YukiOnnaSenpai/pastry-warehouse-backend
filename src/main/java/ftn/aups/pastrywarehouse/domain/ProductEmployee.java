@@ -22,20 +22,14 @@ public class ProductEmployee {
 
     private String workplace;
 
-    @OneToMany(
-            mappedBy = "productEmployee",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<WorkOrder> workOrders;
-
-    public void addWorkOrder(WorkOrder workOrder) {
-        workOrders.add(workOrder);
-        workOrder.setProductEmployee(this);
-    }
-
-    public void removeWorkOrder(WorkOrder workOrder) {
-        workOrders.remove(workOrder);
-        workOrder.setProductEmployee(null);
-    }
+	/*
+	 * @OneToMany( mappedBy = "productEmployee", cascade = CascadeType.ALL,
+	 * orphanRemoval = true ) private List<WorkOrder> workOrders;
+	 * 
+	 * public void addWorkOrder(WorkOrder workOrder) { workOrders.add(workOrder);
+	 * workOrder.setProductEmployee(this); }
+	 * 
+	 * public void removeWorkOrder(WorkOrder workOrder) {
+	 * workOrders.remove(workOrder); workOrder.setProductEmployee(null); }
+	 */
 }

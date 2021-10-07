@@ -23,8 +23,11 @@ public class SupplyMapper implements Mapper<SupplyDto, Supply> {
     supplyDto.setValidFrom(supply.getValidFrom());
     supplyDto.setValidTo(supply.getValidTo());
     supplyDto.setStockQuantity(supply.getStockQuantity());
-    supplyDto.setMaterial(materialMapper.toDto(supply.getMaterial()));
-    supplyDto.setPackagingSupply(packagingSupplyMapper.toDto(supply.getPackagingSupply()));
+	/*
+	 * supplyDto.setMaterial(materialMapper.toDto(supply.getMaterial()));
+	 * supplyDto.setPackagingSupply(packagingSupplyMapper.toDto(supply.
+	 * getPackagingSupply()));
+	 */
 
     return supplyDto;
   }
@@ -38,8 +41,11 @@ public class SupplyMapper implements Mapper<SupplyDto, Supply> {
     supply.setStockQuantity(supplyDto.getStockQuantity());
     supply.setValidFrom(supplyDto.getValidFrom());
     supply.setValidTo(supplyDto.getValidTo());
-    supply.setMaterial(materialMapper.toEntity(supplyDto.getMaterial()));
-    supply.setPackagingSupply(packagingSupplyMapper.toEntity(supplyDto.getPackagingSupply()));
+	/*
+	 * supply.setMaterial(materialMapper.toEntity(supplyDto.getMaterial()));
+	 * supply.setPackagingSupply(packagingSupplyMapper.toEntity(supplyDto.
+	 * getPackagingSupply()));
+	 */
 
     return supply;
   }
