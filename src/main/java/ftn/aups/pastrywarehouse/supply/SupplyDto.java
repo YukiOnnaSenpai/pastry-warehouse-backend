@@ -23,11 +23,9 @@ public class SupplyDto {
 
   private MeasurementUnit measurementUnit;
 
-	/*
-	 * private EquipmentDto equipment;
-	 * 
-	 * private MaterialDto material;
-	 * 
-	 * private PackagingSupplyDto packagingSupply;
-	 */
+  private EquipmentDto equipment;
+
+  private MaterialDto material;
+
+  private PackagingSupplyDto packagingSupply;
 }
