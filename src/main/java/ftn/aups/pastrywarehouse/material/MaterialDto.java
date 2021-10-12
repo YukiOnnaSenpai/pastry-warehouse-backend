@@ -11,5 +11,5 @@ public class MaterialDto {
 
   private MaterialType materialType;
 
-  private SupplyDto supplyDto;
+  private SupplyDto supply;
 }

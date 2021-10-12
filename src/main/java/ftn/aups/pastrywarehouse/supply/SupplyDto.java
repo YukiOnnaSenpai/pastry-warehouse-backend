@@ -12,6 +12,8 @@ import lombok.Data;
 public class SupplyDto {
 
   private Long id;
+  
+  private LocalDate dateAdded;
 
   private LocalDate validFrom;
 

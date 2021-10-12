@@ -16,7 +16,9 @@ public class MaterialService implements CrudService<Material> {
 
   @Override
   public List<Material> getAll() {
-    return materialRepository.findAll();
+	  List<Material> materials = materialRepository.findAll();
+	  System.out.println(materials.get(0).getSupply().getName());
+    return materials;
   }
 
   @Override
