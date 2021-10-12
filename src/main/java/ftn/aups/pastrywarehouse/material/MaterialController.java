@@ -31,6 +31,7 @@ public class MaterialController {
 
   @PostMapping("api/material")
   public ResponseEntity<MaterialDto> insert(@RequestBody MaterialDto materialDto) {
+	  System.out.println("ID SPLAJA U MATERIJALU>>>>>>>>>>" + materialDto.getSupplyDto().getId());
     Material save = materialService.save(materialMapper.toEntity(materialDto));
     return ResponseEntity.ok().body(materialMapper.toDto(save));
   }

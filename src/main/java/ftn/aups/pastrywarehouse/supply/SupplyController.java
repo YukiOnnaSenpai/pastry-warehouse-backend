@@ -32,6 +32,7 @@ public class SupplyController {
   @PostMapping("api/supply")
   public ResponseEntity<SupplyDto> insert(@RequestBody SupplyDto supply) {
     Supply save = supplyService.save(supplyMapper.toEntity(supply));
+    System.out.println("ID SPLAJA >>>>> " + save.getId());
     return ResponseEntity.ok().body(supplyMapper.toDto(save));
   }
 

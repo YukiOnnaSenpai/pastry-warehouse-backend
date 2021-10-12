@@ -18,6 +18,7 @@ public class SupplyMapper implements Mapper<SupplyDto, Supply> {
   @Override
   public SupplyDto toDto(Supply supply) {
     SupplyDto supplyDto = new SupplyDto();
+    supplyDto.setId(supply.getId());
     supplyDto.setMeasurementUnit(supply.getMeasurementUnit());
     supplyDto.setName(supply.getName());
     supplyDto.setValidFrom(supply.getValidFrom());
