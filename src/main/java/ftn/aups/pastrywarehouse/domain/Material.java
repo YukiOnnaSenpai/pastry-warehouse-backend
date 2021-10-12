@@ -9,11 +9,12 @@ import javax.persistence.*;
 public class Material {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     private MaterialType materialType;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @MapsId
     private Supply supply;
 }

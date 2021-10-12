@@ -23,9 +23,12 @@ public class MaterialMapper implements Mapper<MaterialDto, Material> {
     supplyDto.setId(material.getSupply().getId());
     supplyDto.setMeasurementUnit(material.getSupply().getMeasurementUnit());
     supplyDto.setName(material.getSupply().getName());
+    supplyDto.setDateAdded(material.getSupply().getDateAdded());
     supplyDto.setValidFrom(material.getSupply().getValidFrom());
     supplyDto.setValidTo(material.getSupply().getValidTo());
     supplyDto.setStockQuantity(material.getSupply().getStockQuantity());
+    
+    materialDto.setSupply(supplyDto);
     
     return materialDto;
   }
@@ -38,14 +41,13 @@ public class MaterialMapper implements Mapper<MaterialDto, Material> {
     
     Supply supply = new Supply();
     
-    if(materialDto.getSupplyDto() != null) {
-	    supply.setId(materialDto.getSupplyDto().getId());
-	    
-	    supply.setName(materialDto.getSupplyDto().getName());
-	    supply.setMeasurementUnit(materialDto.getSupplyDto().getMeasurementUnit());
-	    supply.setStockQuantity(materialDto.getSupplyDto().getStockQuantity());
-	    supply.setValidFrom(materialDto.getSupplyDto().getValidFrom());
-	    supply.setValidTo(materialDto.getSupplyDto().getValidTo());
+    if(materialDto.getSupply() != null) {
+	    supply.setId(materialDto.getSupply().getId());
+	    supply.setName(materialDto.getSupply().getName());
+	    supply.setMeasurementUnit(materialDto.getSupply().getMeasurementUnit());
+	    supply.setStockQuantity(materialDto.getSupply().getStockQuantity());
+	    supply.setValidFrom(materialDto.getSupply().getValidFrom());
+	    supply.setValidTo(materialDto.getSupply().getValidTo());
 	    material.setSupply(supply);
     }
     return material;

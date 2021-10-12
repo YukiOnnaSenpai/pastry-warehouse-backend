@@ -19,6 +19,7 @@ public class SupplyMapper implements Mapper<SupplyDto, Supply> {
   public SupplyDto toDto(Supply supply) {
     SupplyDto supplyDto = new SupplyDto();
     supplyDto.setId(supply.getId());
+    supplyDto.setDateAdded(supply.getDateAdded());
     supplyDto.setMeasurementUnit(supply.getMeasurementUnit());
     supplyDto.setName(supply.getName());
     supplyDto.setValidFrom(supply.getValidFrom());
@@ -40,6 +41,7 @@ public class SupplyMapper implements Mapper<SupplyDto, Supply> {
     supply.setName(supplyDto.getName());
     supply.setMeasurementUnit(supplyDto.getMeasurementUnit());
     supply.setStockQuantity(supplyDto.getStockQuantity());
+    supply.setDateAdded(supplyDto.getDateAdded());
     supply.setValidFrom(supplyDto.getValidFrom());
     supply.setValidTo(supplyDto.getValidTo());
 	/*

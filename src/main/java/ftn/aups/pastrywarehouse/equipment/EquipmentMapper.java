@@ -17,7 +17,8 @@ public class EquipmentMapper implements Mapper<EquipmentDto, Equipment> {
   @Override
   public EquipmentDto toDto(Equipment equipment) {
     EquipmentDto equipmentDto = new EquipmentDto();
-    equipmentDto.setSupplyDto(supplyMapper.toDto(equipment.getSupply()));
+    equipmentDto.setId(equipment.getId());
+    equipmentDto.setSupply(supplyMapper.toDto(equipment.getSupply()));
     equipmentDto.setWarranty(equipment.getWarranty());
     equipmentDto.setMaintainedStatus(equipment.getMaintainedStatus());
     return equipmentDto;
@@ -29,7 +30,7 @@ public class EquipmentMapper implements Mapper<EquipmentDto, Equipment> {
     equipment.setId(equipmentDto.getId());
     equipment.setMaintainedStatus(equipmentDto.getMaintainedStatus());
     equipment.setDateMaintained(LocalDate.now());
-    equipment.setSupply(supplyMapper.toEntity(equipmentDto.getSupplyDto()));
+    equipment.setSupply(supplyMapper.toEntity(equipmentDto.getSupply()));
     equipment.setWarranty(equipmentDto.getWarranty());
     return equipment;
   }

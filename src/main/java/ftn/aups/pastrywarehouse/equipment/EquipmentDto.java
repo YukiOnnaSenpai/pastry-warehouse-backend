@@ -13,5 +13,5 @@ public class EquipmentDto {
 
   private MaintainedStatus maintainedStatus;
 
-  private SupplyDto supplyDto;
+  private SupplyDto supply;
 }

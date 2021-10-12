@@ -14,7 +14,7 @@ public class Supply {
     @GeneratedValue
     private Long id;
 
-    private LocalDateTime dateAdded;
+    private LocalDate dateAdded;
 
     private LocalDate validFrom;
 
@@ -26,14 +26,13 @@ public class Supply {
 
     private MeasurementUnit measurementUnit;
 
-    @OneToOne
-    private Equipment equipment;
-
-    @OneToOne
-    private Material material;
-
-    @OneToOne
-    private PackagingSupply packagingSupply;
+	/*
+	 * @OneToOne private Equipment equipment;
+	 * 
+	 * @OneToOne private Material material;
+	 * 
+	 * @OneToOne private PackagingSupply packagingSupply;
+	 */
 
     @ManyToOne(fetch = FetchType.LAZY)
     private StorageUnit storageUnit;

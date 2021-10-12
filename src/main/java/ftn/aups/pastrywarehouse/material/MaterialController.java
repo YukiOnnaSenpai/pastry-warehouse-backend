@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ftn.aups.pastrywarehouse.domain.Material;
+import ftn.aups.pastrywarehouse.domain.Supply;
+import ftn.aups.pastrywarehouse.supply.SupplyDto;
+import ftn.aups.pastrywarehouse.supply.SupplyMapper;
+import ftn.aups.pastrywarehouse.supply.SupplyService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -21,24 +25,31 @@ public class MaterialController {
   
   private final MaterialService materialService;
   private final MaterialMapper materialMapper;
+  private final SupplyService supplyService;
+  private final SupplyMapper supplyMapper;
 
   @GetMapping("api/material")
   public List<MaterialDto> getAll() {
-    return materialService.getAll().stream()
-        .map(materialMapper::toDto)
-        .collect(Collectors.toList());
+	  List<MaterialDto> materialDtos = materialService.getAll().stream()
+		        .map(materialMapper::toDto)
+		        .collect(Collectors.toList());
+	  System.out.println(materialDtos.get(0).getSupply().getName());
+    return materialDtos;
   }
 
   @PostMapping("api/material")
   public ResponseEntity<MaterialDto> insert(@RequestBody MaterialDto materialDto) {
-	  System.out.println("ID SPLAJA U MATERIJALU>>>>>>>>>>" + materialDto.getSupplyDto().getId());
+	Supply savedSupply = supplyService.save(supplyMapper.toEntity(materialDto.getSupply()));
+	SupplyDto savedSupplyDto = supplyMapper.toDto(savedSupply);
+	materialDto.setSupply(savedSupplyDto);
     Material save = materialService.save(materialMapper.toEntity(materialDto));
     return ResponseEntity.ok().body(materialMapper.toDto(save));
   }
 
-  @PutMapping("api/material/{id}")
+  @PutMapping("api/material/{id}") 
   public ResponseEntity<MaterialDto> update(@RequestBody MaterialDto materialDto, @PathVariable("id") Long id) {
     materialDto.setId(id);
+    Supply supplySave = supplyService.save(supplyMapper.toEntity(materialDto.getSupply()));
     Material save = materialService.save(materialMapper.toEntity(materialDto));
     return ResponseEntity.ok().body(materialMapper.toDto(save));
   }
