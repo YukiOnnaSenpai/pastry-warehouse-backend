@@ -9,7 +9,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         temp:
@@ -19,6 +19,6 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/pastry-warehouse
     username: postgres
-    password: admin
+    password: postgres
     platform: POSTGRESQL
 

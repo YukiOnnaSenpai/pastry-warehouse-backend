@@ -22,41 +22,39 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 public class MaterialController {
-  
-  private final MaterialService materialService;
-  private final MaterialMapper materialMapper;
-  private final SupplyService supplyService;
-  private final SupplyMapper supplyMapper;
 
-  @GetMapping("api/material")
-  public List<MaterialDto> getAll() {
-	  List<MaterialDto> materialDtos = materialService.getAll().stream()
-		        .map(materialMapper::toDto)
-		        .collect(Collectors.toList());
-	  System.out.println(materialDtos.get(0).getSupply().getName());
-    return materialDtos;
-  }
+	private final MaterialService materialService;
+	private final MaterialMapper materialMapper;
+	private final SupplyService supplyService;
+	private final SupplyMapper supplyMapper;
 
-  @PostMapping("api/material")
-  public ResponseEntity<MaterialDto> insert(@RequestBody MaterialDto materialDto) {
-	Supply savedSupply = supplyService.save(supplyMapper.toEntity(materialDto.getSupply()));
-	SupplyDto savedSupplyDto = supplyMapper.toDto(savedSupply);
-	materialDto.setSupply(savedSupplyDto);
-    Material save = materialService.save(materialMapper.toEntity(materialDto));
-    return ResponseEntity.ok().body(materialMapper.toDto(save));
-  }
+	@GetMapping("api/material")
+	public List<MaterialDto> getAll() {
+		List<MaterialDto> materialDtos = materialService.getAll().stream().map(materialMapper::toDto)
+				.collect(Collectors.toList());
+		return materialDtos;
+	}
 
-  @PutMapping("api/material/{id}") 
-  public ResponseEntity<MaterialDto> update(@RequestBody MaterialDto materialDto, @PathVariable("id") Long id) {
-    materialDto.setId(id);
-    Supply supplySave = supplyService.save(supplyMapper.toEntity(materialDto.getSupply()));
-    Material save = materialService.save(materialMapper.toEntity(materialDto));
-    return ResponseEntity.ok().body(materialMapper.toDto(save));
-  }
+	@PostMapping("api/material")
+	public ResponseEntity<MaterialDto> insert(@RequestBody MaterialDto materialDto) {
+		Supply savedSupply = supplyService.save(supplyMapper.toEntity(materialDto.getSupply()));
+		SupplyDto savedSupplyDto = supplyMapper.toDto(savedSupply);
+		materialDto.setSupply(savedSupplyDto);
+		Material save = materialService.save(materialMapper.toEntity(materialDto));
+		return ResponseEntity.ok().body(materialMapper.toDto(save));
+	}
 
-  @DeleteMapping("api/material/{id}")
-  public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
-    materialService.delete(id);
-    return ResponseEntity.noContent().build();
-  }
+	@PutMapping("api/material/{id}")
+	public ResponseEntity<MaterialDto> update(@RequestBody MaterialDto materialDto, @PathVariable("id") Long id) {
+		materialDto.setId(id);
+		Supply supplySave = supplyService.save(supplyMapper.toEntity(materialDto.getSupply()));
+		Material save = materialService.save(materialMapper.toEntity(materialDto));
+		return ResponseEntity.ok().body(materialMapper.toDto(save));
+	}
+
+	@DeleteMapping("api/material/{id}")
+	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
+		materialService.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 }

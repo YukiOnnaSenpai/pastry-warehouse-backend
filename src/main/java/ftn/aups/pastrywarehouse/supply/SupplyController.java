@@ -18,34 +18,31 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 public class SupplyController {
-  
-  private final SupplyService supplyService;
-  private final SupplyMapper supplyMapper;
 
-  @GetMapping("api/supply")
-  public List<SupplyDto> getAll() {
-    return supplyService.getAll().stream()
-        .map(supplyMapper::toDto)
-        .collect(Collectors.toList());
-  }
+	private final SupplyService supplyService;
+	private final SupplyMapper supplyMapper;
 
-  @PostMapping("api/supply")
-  public ResponseEntity<SupplyDto> insert(@RequestBody SupplyDto supply) {
-    Supply save = supplyService.save(supplyMapper.toEntity(supply));
-    System.out.println("ID SPLAJA >>>>> " + save.getId());
-    return ResponseEntity.ok().body(supplyMapper.toDto(save));
-  }
+	@GetMapping("api/supply")
+	public List<SupplyDto> getAll() {
+		return supplyService.getAll().stream().map(supplyMapper::toDto).collect(Collectors.toList());
+	}
 
-  @PutMapping("api/supply/{id}")
-  public ResponseEntity<SupplyDto> update(@RequestBody SupplyDto supply, @PathVariable("id") Long id) {
-    supply.setId(id);
-    Supply save = supplyService.save(supplyMapper.toEntity(supply));
-    return ResponseEntity.ok().body(supplyMapper.toDto(save));
-  }
+	@PostMapping("api/supply")
+	public ResponseEntity<SupplyDto> insert(@RequestBody SupplyDto supply) {
+		Supply save = supplyService.save(supplyMapper.toEntity(supply));
+		return ResponseEntity.ok().body(supplyMapper.toDto(save));
+	}
 
-  @DeleteMapping("api/supply/{id}")
-  public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
-    supplyService.delete(id);
-    return ResponseEntity.noContent().build();
-  }
+	@PutMapping("api/supply/{id}")
+	public ResponseEntity<SupplyDto> update(@RequestBody SupplyDto supply, @PathVariable("id") Long id) {
+		supply.setId(id);
+		Supply save = supplyService.save(supplyMapper.toEntity(supply));
+		return ResponseEntity.ok().body(supplyMapper.toDto(save));
+	}
+
+	@DeleteMapping("api/supply/{id}")
+	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
+		supplyService.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 }

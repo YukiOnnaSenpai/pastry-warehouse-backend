@@ -12,27 +12,26 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MaterialService implements CrudService<Material> {
 
-  private final MaterialRepository materialRepository;
+	private final MaterialRepository materialRepository;
 
-  @Override
-  public List<Material> getAll() {
-	  List<Material> materials = materialRepository.findAll();
-	  System.out.println(materials.get(0).getSupply().getName());
-    return materials;
-  }
+	@Override
+	public List<Material> getAll() {
+		List<Material> materials = materialRepository.findAll();
+		return materials;
+	}
 
-  @Override
-  public Material getOne(Long id) {
-    return materialRepository.getOne(id);
-  }
+	@Override
+	public Material getOne(Long id) {
+		return materialRepository.getOne(id);
+	}
 
-  @Override
-  public Material save(Material material) {
-    return materialRepository.save(material);
-  }
+	@Override
+	public Material save(Material material) {
+		return materialRepository.save(material);
+	}
 
-  @Override
-  public void delete(Long id) {
-    materialRepository.deleteById(id);
-  }
+	@Override
+	public void delete(Long id) {
+		materialRepository.deleteById(id);
+	}
 }
